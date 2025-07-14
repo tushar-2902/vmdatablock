@@ -11,19 +11,20 @@
   <img src="https://img.shields.io/badge/Cloud-Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white"/>
   <img src="https://img.shields.io/badge/VM-Linux%20VM-blue?style=for-the-badge&logo=linux"/>
   <img src="https://img.shields.io/badge/Database-AzureSQL-green?style=for-the-badge&logo=microsoftsqlserver&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Security-KeyVault-darkblue?style=for-the-badge&logo=microsoftazure"/>
 </p>
 
 ---
 
 ## 🚀 Overview
 
-> Production-grade Terraform project that automates deployment of Azure Infrastructure.  
-> Provisions Azure Virtual Network, Linux Virtual Machines, Public IP, Subnet, SQL Server + DB, and installs NGINX. All credentials securely fetched from Azure Key Vault.
+> This project automates the provisioning of **Azure Infrastructure** using **Terraform**.  
+> It creates a **Virtual Network**, **Linux VMs**, **Azure SQL Server + DB**, installs **NGINX**, and uses **Azure Key Vault** to fetch secrets securely.
 
-✅ Fully modular architecture  
-✅ Secrets secured via Azure Key Vault  
-✅ NGINX installation with remote-exec  
-✅ Perfect for real-world CI/CD and GitOps pipelines
+✅ Fully modular Terraform structure  
+🔐 Secrets secured via Azure Key Vault  
+🌐 NGINX auto-installed using remote-exec  
+🧱 CI/CD & GitOps ready architecture  
 
 ---
 
@@ -42,34 +43,62 @@ vm_datablock/
 │   └── terraform.tfstate (ignored)
 ├── .gitignore
 └── README.md
+```
 
-💡 Key Features
-🔧 Feature	✅ Description
-for_each on VMs	Provision multiple VMs dynamically
-NGINX provisioning	Remote shell installs NGINX on each VM
-Key Vault integration	Admin credentials securely fetched from Azure Key Vault
-Modular .tf structure	Each Azure resource handled separately
-Statefile handling	.gitignore protects all sensitive Terraform state
-CI/CD Ready	Compatible with GitHub Actions & remote backends
+---
 
-# 1. Authenticate Azure CLI
+## 💡 Key Features
+
+- 🚀 Provision **multiple Linux VMs** using `for_each`
+- 🔐 Admin username & password fetched from **Azure Key Vault**
+- 🌐 Installs **NGINX** via remote shell (provisioner)
+- 💾 Creates Azure SQL Server + Database
+- 📦 Clean modular `.tf` structure for all resources
+- ✅ `.gitignore` handles sensitive Terraform state & lock files
+
+---
+
+## 🧪 How to Deploy
+
+```bash
+# 1. Login to Azure
 az login
 
-# 2. Move to working environment directory
+# 2. Move to env directory
 cd todo-env
 
 # 3. Initialize Terraform
 terraform init
 
-# 4. Preview Infrastructure Changes
+# 4. Preview changes
 terraform plan
 
-# 5. Apply Infrastructure
+# 5. Apply configuration
 terraform apply -auto-approve
 
-# 6. Destroy Infrastructure
+# 6. Destroy infrastructure
 terraform destroy -auto-approve
+```
 
+> 🔑 Make sure Azure Key Vault contains the secrets:
+> - `adminname1` (admin username)
+> - `adminpass1` (admin password)
+
+---
+
+## 📸 Screenshots
+
+> Put your screenshots in a `screenshots/` folder and reference them like:
+
+```html
+<img src="./screenshots/terraform_apply.png" width="700"/>
+```
+
+---
+
+## 📄 .gitignore
+
+```gitignore
 .terraform/
 *.tfstate
 *.tfstate.*
@@ -78,15 +107,25 @@ terraform destroy -auto-approve
 *.tfplan
 *.backup
 terraform.lock.hcl
+```
 
-👨‍💻 Author
-Tushar Mishra – DevOps | Azure | Terraform
-📧 tusharmishra2902@gmail.com
-🔗 LinkedIn
+---
 
-🐙 GitHub
+## 👨‍💻 Author
 
-⚖️ License
-This project is licensed under the MIT License
+**Tushar Mishra** – DevOps | Azure | Terraform  
+📧 tusharmishra2902@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/tushar-mishra-02461235a)  
+🐙 [GitHub](https://github.com/tushar-2902)
 
+---
 
+## ⚖️ License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&colorGradient=5C4EE5,0A66C2&height=120&section=footer"/>
+</p>
